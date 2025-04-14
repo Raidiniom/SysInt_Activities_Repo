@@ -1,0 +1,134 @@
+/* Container and Card Styling */
+.posts-container {
+    padding: 2rem;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    background-color: #f0f4ff;
+    min-height: 100vh;
+    box-sizing: border-box;
+    overflow-x: auto;
+}
+
+.posts-card {
+    width: 100%;
+    max-width: 80rem;
+    box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
+    border-radius: 16px;
+    padding: 2rem;
+    background: white;
+    border: 1px solid #d1e3ff;
+    overflow-x: auto;
+}
+
+/* Title Styling */
+.table-title {
+    text-align: center;
+    margin-bottom: 2rem;
+    font-size: 2rem;
+    color: #0055cc;
+    font-weight: 600;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* Empty State Styling */
+.empty-state {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 10rem;
+}
+
+/* Table Styling */
+.posts-table {
+    min-width: 900px; /* Forces scroll if needed */
+    font-family: 'Segoe UI', sans-serif;
+    border-spacing: 0;
+    table-layout: auto;
+    word-break: break-word;
+}
+
+/* PrimeReact Table Overrides */
+.p-datatable-scrollable .p-datatable-wrapper {
+    overflow-x: auto;
+}
+
+.p-datatable .p-datatable-thead > tr > th {
+    background: #e6f0ff;
+    color: #003399;
+    font-weight: 600;
+    padding: 1rem;
+    font-size: 1rem;
+    border-bottom: 1px solid #d1e3ff;
+    white-space: nowrap;
+}
+
+.p-datatable .p-datatable-tbody > tr {
+    transition: 0.3s ease;
+    background: #f0f4ff;
+}
+
+.p-datatable .p-datatable-tbody > tr:nth-child(even) {
+    background: #f9fbff;
+    color: #333;
+}
+
+.p-datatable .p-datatable-tbody > tr:nth-child(odd) {
+    color: #333;
+}
+
+.p-datatable .p-datatable-tbody > tr:hover {
+    background: #dbeeff;
+    color: #000;
+}
+
+/* Cell Padding */
+.p-datatable .p-datatable-tbody > tr > td {
+    padding: 0.9rem;
+    border-bottom: 1px solid #f0f4ff;
+    white-space: normal;
+}
+
+/* Message Styling */
+.p-message {
+    font-size: 1rem;
+    padding: 1rem;
+    text-align: center;
+    background-color: #ffe8f3;
+    color: #cc0066;
+    border-radius: 8px;
+}
+
+/* Pagination Styling */
+.p-paginator {
+    display: flex;
+    justify-content: center;
+    gap: 0.5rem;
+    padding-top: 1.5rem;
+}
+
+.p-paginator-page,
+.p-paginator-prev,
+.p-paginator-next {
+    padding: 0.5rem 1rem;
+    border: 1px solid #d1e3ff;
+    border-radius: 8px;
+    background-color: #ffffff;
+    color: #0055cc;
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.p-paginator-page:hover,
+.p-paginator-prev:hover,
+.p-paginator-next:hover {
+    background-color: #ffd9ec;
+    color: #cc0066;
+    cursor: pointer;
+}
+
+.p-paginator .p-highlight {
+    background-color: #cc0066;
+    color: white;
+    font-weight: bold;
+    border: none;
+}
