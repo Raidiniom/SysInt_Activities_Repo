@@ -14,7 +14,7 @@ async function receiveMsg() {
     try {
       const receive_post = JSON.parse(msg.content.toString());
 
-      console.log(`${receive_post.id}\n${receive_post.title}\n${receive_post.content}`);
+      console.log(`===============\nPost ID: ${receive_post.id}\nPost Title: ${receive_post.title}\nPost Content: ${receive_post.content}`);
     } catch (error) {
       console.log(`[x] Message Failed: ${msg.content.toString()}`);
     }
