@@ -17,6 +17,11 @@ const pubsub = new PubSub();
 const queue = 'hello';
 let channel;
 
+function delay(ms) {
+  return new Promise(resolve => setTimeout(resolve, ms));
+}
+
+
 const typeDefs = `#graphql
   type Post {
     id: ID!
@@ -136,6 +141,29 @@ async function rabbitMQSetup() {
   await channel.assertQueue(queue, { durable: false});
 
   console.log('[x] Channel is ready to publish!')
+
+  autoCreatePosts();
 }
 
 rabbitMQSetup();
+
+async function autoCreatePosts() {
+  let counter = 1;
+  while (true) {
+    const title = `Auto Post #${counter}`;
+    const content = `This is auto-generated post #${counter}`;
+
+    const post = await prisma.post.create({ data: { title, content } });
+
+    pubsub.publish('POST_CREATED', { postCreated: post });
+
+    if (channel) {
+      const msg = JSON.stringify(post);
+      channel.sendToQueue(queue, Buffer.from(msg));
+      console.log(`[Auto] Sent to queue: ${msg}`);
+    }
+
+    counter++;
+    await delay(1000); // ⏱ 1 second delay between posts
+  }
+}
